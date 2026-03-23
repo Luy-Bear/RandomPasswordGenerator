@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <p id="TitleP">Password Generator</p>
+        <button id="darkModeBtn">DarkMode</button>
+        <div id="WarningPopUp">
+            <p>The length of the password is specified is less that the sum of the special character requested and the number of capital letters requested.</p>
+            <p>Please adjust the parameters before attempting to generate a password.</p>
+        </div>
+        
+        <div class="argWrapper" id="pwLengthArgDiv">
+            <p>Length of Password: </p>
+            <div class="interactiveWrapper">
+                <button id="AddLenBtn">+</button>
+                <p id="pwLenP">0</p>
+                <button  id="RmvLenBtn">-</button>
+        
+            </div>
+        </div>
+
+        <div class="argWrapper" id="pwSpecialCharArgDiv">
+            <p>Minimum Number of Special Characters: </p>
+            <div class="interactiveWrapper">
+                <button id="AddSpecCharBtn">+</button>
+                <p id="pwSpecCharP">0</p>
+                <button id="RmvSpecCharBtn">-</button>
+        
+            </div>
+        </div>
+
+        <div class="argWrapper" id="pwUpperCharArgDiv">
+            <p>Minimum Number of Capital Letters: </p>
+            <div class="interactiveWrapper">
+                <button id="AddUpperChatBtn">+</button>
+                <p id="pwUpperCharP">0</p>
+                <button id="RmvUpperChatBtn">-</button>
+            </div>
+        </div>
+        
+        <div class="generatedPasswordsWrapper">
+            <p class="generatedPw" id="GenPwOne"> **** </p>
+            <button id="GenPwBtn">⟳</button>
+            <p class="generatedPw" id="GenPwTwo"> **** </p>
+        </div>
+    
+        <script src="index.js"></script>
+    </body>
+</html>

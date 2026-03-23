@@ -1,0 +1,59 @@
+body{
+    text-align: center;
+    background-color: #7e7e7e;
+}
+
+*{
+    border: 1px solid black;
+    margin: 1.4vh
+}
+
+#darkModeBtn{
+    position:absolute;
+    top: 2vh;
+    right: 2vh;
+    width: 5vw;
+    height: 5vw;
+    
+}
+
+#WarningPopUp{
+    border: .3vh solid red;
+    border-radius: 2vh;
+    max-width: 30%;
+    background-color: rgba(255, 162, 162, 0.658);
+
+    position:absolute;
+    top: 4vh;
+    left: 3vh;
+
+    /* text size?? */
+
+    display: none;
+}
+
+#TitleP{
+    text-align: center;
+}
+
+.argWrapper{
+    padding-left: 35%;
+    padding-right: 35%;
+    display: flex; 
+    align-items: center;
+    justify-content:space-between;
+}
+
+.generatedPasswordsWrapper{ 
+    display:flex;
+    justify-content: center;
+}
+
+p{
+    /* //font family  */
+}
+
+#TitleP{
+    font-size: 5vh;
+    font-weight: bold;
+}
