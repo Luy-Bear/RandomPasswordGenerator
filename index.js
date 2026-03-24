@@ -1,6 +1,6 @@
-//Lower Case: 97-122
-//Upper case: 65-90
-//Special chars: 33-47 58-64 91-96 (punctuation)
+//Lower Case: 97-122 (26)
+//Upper case: 65-90 (26)
+//Special chars: 33-47 (15) 58-64 (7) 91-96 (6) (punctuation)
 //Numbers: 48-57
 
 let passwordLenArg = 0;
@@ -34,6 +34,8 @@ GenPasswordBtn.addEventListener('click', () => {
     generatePassword(GenPwTwo);
 })
 
+
+
 //Add on click to passwords P to copy to clipboard
 
 //Darkmode theme
@@ -45,11 +47,29 @@ function generatePassword(PLabel){
     console.log("GeneratingPw")
 
     if(passwordUpperCharCount+passwordSpeicalCharCount <= passwordLenArg){
+        let contents = []
+        let genPw = []
         //Pick passwordUpperCharCount x Upper Chars
-        //pick passwordSpeicalCharCount x Special Chars
-        //for passwordLenArg - (passwordUpperCharCount + passwordSpeicalCharCount) pick random 
+        for(let i = 0; i <passwordUpperCharCount; i++){
+            contents.push(RanUpperChar())
+        }
 
+        //pick passwordSpeicalCharCount x Special Chars
+        for(let i = 0; i <passwordSpeicalCharCount; i++){
+            contents.push(RanSpecialChar())
+        }
+
+        //for passwordLenArg - (passwordUpperCharCount + passwordSpeicalCharCount) pick random 
+        for(let i = 0; i <(passwordLenArg- (passwordUpperCharCount + passwordSpeicalCharCount)); i++){
+            contents.push(RanChar())
+        }
+        
+        console.log(contents)
         //Randomly place these inside array one by one
+        while(contents.length != 0){
+            genPw.push(contents.splice(Math.random()*contents.length, 1).toString() )
+        }
+        console.log(genPw)
         //update using plabel
 
     }
@@ -66,6 +86,20 @@ function generatePassword(PLabel){
 
 
 }
+
+//Upper case: 65-90
+function RanUpperChar(){
+    return(
+        String.fromCharCode( //convert int to ASCII string
+            Math.floor( //round down decimal points
+                Math.random()*(26)) //random number from 0-25 (difference between max and min values)
+                +(65) //add offset to get back to upper case chars in ASCII +1 to fix 0-25 offset
+            )
+        )
+    }
+
+function RanSpecialChar(){return "b"}
+function RanChar(){return "c"}
 
 
 function increaseArg(argPId){
