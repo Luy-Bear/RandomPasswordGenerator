@@ -43,6 +43,10 @@ const darkModeBtn = document.querySelector("#darkModeBtn")
 darkModeBtn.addEventListener("click", () => ToggleDarkMode())
 
 
+for(let i = 0; i <1000; i++){
+    console.log(RanSpecialChar())
+}
+
 function generatePassword(PLabel){
     console.log("GeneratingPw")
 
@@ -98,7 +102,19 @@ function RanUpperChar(){
         )
     }
 
-function RanSpecialChar(){return "b"}
+
+//Special chars: 33-47 (15)           58-64 (7) 91-96 (6) (punctuation)  32 + 6 = 38
+//Numbers:                  48-57 (10)
+// TOTAL: 54 possabilities
+function RanSpecialChar(){
+    //Make virtual pool of ASCII chars to make all odds even
+    let option = Math.floor(Math.random() * 38) //(38 options but 37.9999 rounded down to 37 BUT starting at 0 so 38 total possibiltiies)
+    if(option>=32){option+=26; console.log("BADABING")} //If ran char is after the gap between ASCII code 64 and 91, add the gap offset (25 letters in alphabet, non exclusive)
+    option+=33 //add offset from value to ascii code
+
+    return String.fromCharCode(option) +" FROM " + option
+}
+//Lower Case: 97-122 (26)
 function RanChar(){return "c"}
 
 
