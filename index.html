@@ -1,45 +1,50 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="indextest.css">
     </head>
     <body>
         <p id="TitleP">Password Generator</p>
         <button id="darkModeBtn">DarkMode</button>
         <div id="WarningPopUp">
-            <p>The length of the password is specified is less that the sum of the special character requested and the number of capital letters requested.</p>
-            <p>Please adjust the parameters before attempting to generate a password.</p>
+            The length of the password is specified is less that the sum of the special character requested and the number of capital letters requested.
+            <br> <br> Please adjust the parameters before attempting to generate a password.
         </div>
         
         <div class="argWrapper" id="pwLengthArgDiv">
-            <p>Length of Password: </p>
+            <p class="ArgP">Length of Password: </p>
             <div class="interactiveWrapper">
-                <button id="AddLenBtn">+</button>
+                <button class="ArgButtons TopBtn" id="AddLenBtn">+</button>
                 <p id="pwLenP">0</p>
-                <button  id="RmvLenBtn">-</button>
+                <button class="ArgButtons BotBtn" id="RmvLenBtn">-</button>
         
             </div>
         </div>
 
         <div class="argWrapper" id="pwSpecialCharArgDiv">
-            <p>Minimum Number of Special Characters: </p>
+            <p class="ArgP">Minimum Number of Special Characters: </p>
             <div class="interactiveWrapper">
-                <button id="AddSpecCharBtn">+</button>
+                <button  class="ArgButtons TopBtn" id="AddSpecCharBtn">+</button>
                 <p id="pwSpecCharP">0</p>
-                <button id="RmvSpecCharBtn">-</button>
+                <button  class="ArgButtons BotBtn" id="RmvSpecCharBtn">-</button>
         
             </div>
         </div>
 
         <div class="argWrapper" id="pwUpperCharArgDiv">
-            <p>Minimum Number of Capital Letters: </p>
+            <p class="ArgP">Minimum Number of Capital Letters: </p>
             <div class="interactiveWrapper">
-                <button id="AddUpperChatBtn">+</button>
+                <button  class="ArgButtons TopBtn" id="AddUpperChatBtn">+</button>
                 <p id="pwUpperCharP">0</p>
-                <button id="RmvUpperChatBtn">-</button>
+                <button  class="ArgButtons BotBtn" id="RmvUpperChatBtn">-</button>
             </div>
         </div>
         
+
+        <dvi class="PasswordTabs">
+            <div class="Tabs">Option 1</div>
+            <div class = "Tabs">Option 2</div>
+        </dvi>
         <div class="generatedPasswordsWrapper">
             <p class="generatedPw" id="GenPwOne"> **** </p>
             <button id="GenPwBtn">⟳</button>

@@ -30,8 +30,8 @@ decreaseUpperCountBtn.addEventListener('click', () => decreaseArg("pwUpperCharP"
 //Generate/Refresh Password button
 const GenPasswordBtn = document.querySelector("#GenPwBtn")
 GenPasswordBtn.addEventListener('click', () => {
-    generatePassword(GenPwOne)
-    generatePassword(GenPwTwo);
+    generatePassword("GenPwOne")
+    generatePassword("GenPwTwo");
 })
 
 
@@ -43,55 +43,64 @@ const darkModeBtn = document.querySelector("#darkModeBtn")
 darkModeBtn.addEventListener("click", () => ToggleDarkMode())
 
 
-for(let i = 0; i <1000; i++){
-    console.log(RanSpecialChar())
-}
+// for(let i = 0; i <1000; i++){
+//     console.log(RanChar())
+// }
 
 function generatePassword(PLabel){
-    console.log("GeneratingPw")
+    if(passwordLenArg){
+        if(passwordUpperCharCount+passwordSpeicalCharCount <= passwordLenArg){
+            let contents = []
+            let genPw = []
+            //Pick passwordUpperCharCount x Upper Chars
+            for(let i = 0; i <passwordUpperCharCount; i++){
+                contents.push(RanUpperChar())
+            }
 
-    if(passwordUpperCharCount+passwordSpeicalCharCount <= passwordLenArg){
-        let contents = []
-        let genPw = []
-        //Pick passwordUpperCharCount x Upper Chars
-        for(let i = 0; i <passwordUpperCharCount; i++){
-            contents.push(RanUpperChar())
-        }
+            //pick passwordSpeicalCharCount x Special Chars
+            for(let i = 0; i <passwordSpeicalCharCount; i++){
+                contents.push(RanSpecialChar())
+            }
 
-        //pick passwordSpeicalCharCount x Special Chars
-        for(let i = 0; i <passwordSpeicalCharCount; i++){
-            contents.push(RanSpecialChar())
-        }
+            //for passwordLenArg - (passwordUpperCharCount + passwordSpeicalCharCount) pick random 
+            for(let i = 0; i <(passwordLenArg- (passwordUpperCharCount + passwordSpeicalCharCount)); i++){
+                contents.push(RanChar())
+            }
+            
+            console.log("CONTENTS: "+contents)
+            //Randomly place these inside array one by one
+            while(contents.length != 0){
+                genPw.push(contents.splice(Math.random()*contents.length, 1).toString() )
+            }
+            console.log(genPw)
+            //update using plabel
+            const pwEl = document.querySelector("#"+PLabel)
+            pwEl.textContent = genPw.join("") //Specifies i want the values to be sepearted by "" aka nothing
 
-        //for passwordLenArg - (passwordUpperCharCount + passwordSpeicalCharCount) pick random 
-        for(let i = 0; i <(passwordLenArg- (passwordUpperCharCount + passwordSpeicalCharCount)); i++){
-            contents.push(RanChar())
         }
-        
-        console.log(contents)
-        //Randomly place these inside array one by one
-        while(contents.length != 0){
-            genPw.push(contents.splice(Math.random()*contents.length, 1).toString() )
+        else{
+            let PopupEl = document.querySelector("#WarningPopUp")
+            PopupEl.style.display = "block"
+            PopupEl.innerText="The length of the password is specified is less that the sum of the special character requested and the number of capital letters requested.\n\nPlease adjust the parameters before attempting to generate a password."
+            setTimeout(() => {
+                    let PopupEl = document.querySelector("#WarningPopUp");
+                    PopupEl.style.display = "none" }
+                , 5000);
         }
-        console.log(genPw)
-        //update using plabel
-
     }
     else{
         let PopupEl = document.querySelector("#WarningPopUp")
-        PopupEl.style.display = "block"
-
-        setTimeout(() => {
-                let PopupEl = document.querySelector("#WarningPopUp");
-                PopupEl.style.display = "none" }
-            , 5000);
+            PopupEl.style.display = "block"
+            PopupEl.innerText="The length of the password must be more than 0\n\nAmmend this and try again"
+            setTimeout(() => {
+                    let PopupEl = document.querySelector("#WarningPopUp");
+                    PopupEl.style.display = "none" }
+                , 5000);
+        }
     }
-    
 
 
-}
-
-//Upper case: 65-90
+//Upper case: 65-90 (26)
 function RanUpperChar(){
     return(
         String.fromCharCode( //convert int to ASCII string
@@ -108,14 +117,28 @@ function RanUpperChar(){
 // TOTAL: 54 possabilities
 function RanSpecialChar(){
     //Make virtual pool of ASCII chars to make all odds even
-    let option = Math.floor(Math.random() * 38) //(38 options but 37.9999 rounded down to 37 BUT starting at 0 so 38 total possibiltiies)
-    if(option>=32){option+=26; console.log("BADABING")} //If ran char is after the gap between ASCII code 64 and 91, add the gap offset (25 letters in alphabet, non exclusive)
+    let option = Math.floor(Math.random() * 38) //(38 options but 37.9999 rounded down to 37 as "indexing" from 0
+    if(option>=32){option+=26} //If ran char is after the gap between ASCII code 64 and 91, add the gap offset (25 letters in alphabet, non exclusive)
     option+=33 //add offset from value to ascii code
 
-    return String.fromCharCode(option) +" FROM " + option
+    return String.fromCharCode(option)
 }
 //Lower Case: 97-122 (26)
-function RanChar(){return "c"}
+function RanChar(){
+    //Virtual pool of chars to make odds even (26+26+54 = 106)
+    let option = Math.floor(Math.random() * 106) //(106 options but 105.9999 rounded down to 105 as "indexing" from 0 so still 106 options
+    if(option<26){return RanUpperChar()} //If 0-26
+    else if(option>52){return RanSpecialChar()}
+    else{
+        return(
+            String.fromCharCode( //convert int to ASCII string
+                Math.floor( //round down decimal points
+                    Math.random()*(26)) //random number from 0-25 (difference between max and min values)
+                    +(97) //add offset to get back to upper case chars in ASCII +1 to fix 0-25 offset
+                )
+            )
+    }
+}
 
 
 function increaseArg(argPId){

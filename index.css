@@ -1,11 +1,16 @@
-body{
-    text-align: center;
-    background-color: #7e7e7e;
-}
-
 *{
     border: 1px solid black;
-    margin: 1.4vh
+    margin: 0;
+    padding: 0;
+
+}
+
+body{
+    text-align: center;
+    background-color: hsla(228, 4%, 46%, 0.295);
+    display: grid;    
+    height:100vh;
+    border: 1px solid black;
 }
 
 #darkModeBtn{
@@ -21,7 +26,7 @@ body{
     border: .3vh solid red;
     border-radius: 2vh;
     max-width: 30%;
-    background-color: rgba(255, 162, 162, 0.658);
+    /* background-color: rgba(255, 162, 162, 0.658); */
 
     position:absolute;
     top: 4vh;
@@ -32,28 +37,52 @@ body{
     display: none;
 }
 
-#TitleP{
-    text-align: center;
-}
 
 .argWrapper{
-    padding-left: 35%;
-    padding-right: 35%;
-    display: flex; 
-    align-items: center;
-    justify-content:space-between;
+    display: flex;
+    /* gap: 2%;  */
+    margin:1%;
+    justify-content: center;
+    /* background-color: orange; */
 }
 
 .generatedPasswordsWrapper{ 
     display:flex;
     justify-content: center;
+
 }
 
 p{
     /* //font family  */
 }
 
+
+
+.interactiveWrapper{
+    display: grid;
+    /* background-color: hsl(0, 42%, 50%); */
+    width: 8%;
+    
+}
+
+
+.ArgButtons{
+    margin:0;
+    padding: 0;
+    width: 100%;   
+    height:4vh
+}
+
+.ArgP{
+    display:flex;
+    height: 100%;
+    align-items: center;
+    /* justify-content: flex-end; */
+}
+
 #TitleP{
     font-size: 5vh;
     font-weight: bold;
+    width:fit-content;
+    justify-self: center;
 }
