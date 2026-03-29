@@ -7,6 +7,8 @@ let passwordLenArg = 0;
 let passwordUpperCharCount = 0;
 let passwordSpeicalCharCount = 0;
 let DarkMode = 1;
+let intervalId = 0
+let intervalId2 = 0
 
 //Setting event listeners for buttons
 //Password Length buttons
@@ -30,9 +32,17 @@ decreaseUpperCountBtn.addEventListener('click', () => decreaseArg("pwUpperCharP"
 //Generate/Refresh Password button
 const GenPasswordBtn = document.querySelector("#GenPwBtn")
 GenPasswordBtn.addEventListener('click', () => {
-    generatePassword("GenPwOne")
-    generatePassword("GenPwTwo");
-})
+    // generatePassword("GenPwOne")
+    // generatePassword("GenPwTwo")
+        intervalId = window.setInterval(()=>{generatePassword("GenPwOne"), 100})
+        intervalId2 = window.setInterval(()=>{generatePassword("GenPwTwo"), 100})
+    
+        setTimeout(() => {
+            window.clearInterval(intervalId);
+            window.clearInterval(intervalId2)
+            },
+            700)
+    })
 
 
 
@@ -67,12 +77,11 @@ function generatePassword(PLabel){
                 contents.push(RanChar())
             }
             
-            console.log("CONTENTS: "+contents)
             //Randomly place these inside array one by one
             while(contents.length != 0){
                 genPw.push(contents.splice(Math.random()*contents.length, 1).toString() )
             }
-            console.log(genPw)
+            
             //update using plabel
             const pwEl = document.querySelector("#"+PLabel)
             pwEl.textContent = genPw.join("") //Specifies i want the values to be sepearted by "" aka nothing
@@ -178,5 +187,90 @@ function decreaseArg(argPId){
 
 function ToggleDarkMode(){
     DarkMode = DarkMode?0:1
-    //Update Theme ... somehow
+
+    let moonEl = document.querySelector(".Moon")
+    let sunEl = document.querySelector(".Sun")
+    let darkModeBtn = document.querySelector("#darkModeBtn")
+    if(DarkMode){ //dark
+        moonEl.style.opacity = "1"
+        sunEl.style.backgroundColor = "rgb(227, 238, 188)";
+        sunEl.style.boxShadow = "none"
+        sunEl.style.width= "70%"
+        sunEl.style.height= "70%"
+        moonEl.style.transform = "translate( 0px, 0px)"
+        
+    }
+    else{ //bright
+        moonEl.style.opacity = "0"
+        sunEl.style.backgroundColor = "hsl(59, 70%, 51%)"
+        sunEl.style.boxShadow = "0 0 2vh 5px rgb(247, 255, 130)"
+        sunEl.style.width= "50%"
+        sunEl.style.height= "50%"
+        moonEl.style.transform = "translate(10px, -10px)"
+    }
+    console.log("Bobs")
+    UpdateTheme()
+}
+
+function UpdateTheme(){
+    
+    let bodyEl = document.querySelector("body")
+    let argWrapperEls = document.querySelectorAll(".argWrapper")
+    let tabEls = document.querySelectorAll(".Tabs")
+    let pEls = document.querySelectorAll("p")
+    let TitleP = document.querySelector("#TitleP")
+    let generatePasswordWrapperEls = document.querySelectorAll(".generatedPasswordsWrapper")
+    let GenPWBtn = document.querySelector("#GenPwBtn")
+    let ButtonEls = document.querySelectorAll("button")
+
+    if(DarkMode){
+        bodyEl.style.backgroundColor = "rgb(8, 8, 8)"
+        for(let i = 0; i < argWrapperEls.length; i++){
+            argWrapperEls[i].style.backgroundColor = "rgba(54, 54, 54, 0.301)"  
+        }
+        for(let i = 0; i < tabEls.length; i++){
+            tabEls[i].style.backgroundColor = "#16db9057"
+        }
+        for(let i = 0; i < generatePasswordWrapperEls.length; i++){
+            generatePasswordWrapperEls[i].style.backgroundColor = "rgba(54, 54, 54, 0.301)"
+        }
+        for(let i = 0; i < pEls.length; i++){
+            pEls[i].style.color = "#22855f"
+            pEls[i].style.textShadow = "1.4px 1px 1px #ffffffbd"
+        }
+        for(let i = 0; i < ButtonEls.length; i++){
+            if(!(ButtonEls[i] === darkModeBtn)){
+                ButtonEls[i].style.backgroundColor = "#16db9057"
+                ButtonEls[i].style.border = "3px solid rgba(155, 155, 155, 0.747)"
+            }
+        }
+        TitleP.style.color = "#22855f"
+        TitleP.style.textShadow = "3px 2px #ffffffbd"
+        GenPWBtn.style.backgroundColor = "#16db9057"
+    }
+    else{
+        bodyEl.style.backgroundColor = "rgba(3, 19, 65, 0.89)"
+        for(let i = 0; i < argWrapperEls.length; i++){
+            argWrapperEls[i].style.backgroundColor = "rgba(44, 58, 97, 0.897)"
+        }
+        for(let i = 0; i < tabEls.length; i++){
+            tabEls[i].style.backgroundColor = "hsla(49, 100%, 53%, 0.555)"
+        }
+        for(let i = 0; i < generatePasswordWrapperEls.length; i++){
+            generatePasswordWrapperEls[i].style.backgroundColor = "rgba(44, 58, 97, 0.897)"
+        }
+        for(let i = 0; i < pEls.length; i++){
+            pEls[i].style.color = "rgb(194, 189, 189)"
+            pEls[i].style.textShadow = "1.8px 2px #1f1f1f"
+        }
+        for(let i = 0; i < ButtonEls.length; i++){
+            if(!(ButtonEls[i] === darkModeBtn)){
+                ButtonEls[i].style.backgroundColor = "rgba(238, 168, 18, 0.747)"
+                ButtonEls[i].style.border = "3px solid rgba(170, 128, 38, 0.747)"
+            }
+        }
+        TitleP.style.color = "rgb(194, 189, 189)"
+        TitleP.style.textShadow = "3px 3px #b98823"
+        GenPWBtn.style.backgroundColor = "rgba(238, 180, 55, 0.747)"
+    }
 }

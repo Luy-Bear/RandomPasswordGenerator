@@ -13,17 +13,9 @@
     padding: 0;
     margin: .8%;
     /* border: 1px solid black; */
+    transition: background-color 1.3s linear, color 1.3s linear, text-shadow 1.3s linear;
 }
 
-#darkModeBtn{
-    position:absolute;
-    top: 2vh;
-    right: 2vh;
-    width: 4vw;
-    height: 4vw;  
-    margin: 0; 
-    border-radius: 40%;
- }
 
 
 #WarningPopUp{
@@ -50,8 +42,9 @@
 
 
 body{
-    height: 100vh;
+    height: 90vh;
     background-color:  rgba(3, 19, 65, 0.89);
+    background-color:  rgb(8, 8, 8);
 
     display: flex;
     flex-direction: column;
@@ -68,6 +61,7 @@ body{
 
     border-radius: 40px;
     background-color:  rgba(44, 58, 97, 0.897);
+    background-color: rgba(54, 54, 54, 0.301);
 
 }
 
@@ -111,14 +105,18 @@ body{
 }
 
 .Tabs{
-    background-color:  hsla(49, 100%, 53%, 0.555);
+    /* background-color:  hsla(49, 100%, 53%, 0.555); */
+    background-color: #16db9057;
+
+    color: rgb(194, 194, 189);
     width: 20%;
     text-align: center;
     border-radius: 12px 12px 0 0;
     font-family: Hack;
     font-size: 1em;
-    color: rgb(194, 194, 189);
     margin-bottom:0
+
+
 }
 
 .generatedPasswordsWrapper{
@@ -129,12 +127,12 @@ body{
     width: 90%;
     border-radius: 20px 20px 0 0;
     background-color: rgba(44, 58, 97, 0.897);
+    background-color: rgba(54, 54, 54, 0.301);
     margin-top: 0;
 }
 
 .generatedPw{
     width: 40%;
-    /* color:red; */
     font-family: "Hack";
 }
 
@@ -143,12 +141,22 @@ body{
     height: 20%;
     font-size: 5em;
     font-family: "Bungee";
+    text-shadow: 3px 3px#b98823;
+    text-shadow: 3px 2px #ffffffbd;
+    color: #22855f;;
 }
 
 p{
     font-size: 1.4em;
-    color: rgb(194, 189, 189);
     font-family: "Bungee";
+
+    color: rgb(194, 189, 189);
+    text-shadow: 1.8px 2px#1f1f1f;
+
+
+    color: #22855f;
+    text-shadow: 1.4px 1px 1px #ffffffbd;
+
 }
 
 
@@ -157,6 +165,11 @@ p{
     width: 8vh;
     border-radius: 11%;
     margin: 0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(238, 180, 55, 0.747);
+    background-color:  #16db9057;
 }
 
 button{
@@ -164,11 +177,14 @@ button{
     background-color: rgba(238, 168, 18, 0.747);
     border: 3px solid rgba(170, 128, 38, 0.747);
 
+    background-color: #16db9057;
+    border: 3px solid rgba(155, 155, 155, 0.747);
+
     box-shadow: rgba(0, 0, 0, 0.3) 1.2px 1.2px 2.6px;
     font-family: Bungee;
     color: rgb(194, 189, 189);
-    font-size: 2.5vh;
-    
+    font-size: 2.5vh;   
+    text-shadow: 2px 2px#1f1f1f;
 }
 
 .Sun{
@@ -178,16 +194,27 @@ button{
     height: 70%;
     border-radius: 100%;
     justify-self: center;
-}
+    transition: box-shadow 1.2s ease, width .6s linear, height .6s linear;
+ }
 .Moon{
-    background-color: #b98823;
+    background-color: rgba(44, 58, 97, 0.9);
     width: 60%;
     height: 60%;
     border-radius: 100%;
     position: absolute;
     right: 5%;
     top: 5%;
-    /* display: none;  */
-
-    
+    transition: opacity 1s ease, transform .6s ease;
+   
 }
+#darkModeBtn{
+    position:absolute;
+    top: 2vh;
+    right: 2vh;
+    width: 4vw;
+    height: 4vw;  
+    margin: 0; 
+    border-radius: 40%;
+    background-color: rgba(44, 58, 97, 0.897);
+    border: 3px solid rgba(170, 128, 38, 0.747);
+ }
