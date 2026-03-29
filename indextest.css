@@ -211,8 +211,8 @@ button{
     position:absolute;
     top: 2vh;
     right: 2vh;
-    width: 4vw;
-    height: 4vw;  
+    width: 90px;
+    height: 90px;  
     margin: 0; 
     border-radius: 40%;
     background-color: rgba(44, 58, 97, 0.897);
