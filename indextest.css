@@ -19,11 +19,11 @@
     position:absolute;
     top: 2vh;
     right: 2vh;
-    width: 5vw;
-    height: 5vw;  
+    width: 4vw;
+    height: 4vw;  
     margin: 0; 
-    border-radius: 40%
-}
+    border-radius: 40%;
+ }
 
 
 #WarningPopUp{
@@ -111,13 +111,13 @@ body{
 }
 
 .Tabs{
-    background-color:  hsla(56, 100%, 68%, 0.288);
+    background-color:  hsla(49, 100%, 53%, 0.555);
     width: 20%;
     text-align: center;
     border-radius: 12px 12px 0 0;
     font-family: Hack;
     font-size: 1em;
-    color: rgb(194, 189, 189);
+    color: rgb(194, 194, 189);
     margin-bottom:0
 }
 
@@ -129,7 +129,7 @@ body{
     width: 90%;
     border-radius: 20px 20px 0 0;
     background-color: rgba(44, 58, 97, 0.897);
-    margin-top: 0;;
+    margin-top: 0;
 }
 
 .generatedPw{
@@ -163,5 +163,31 @@ button{
     border: none;
     background-color: rgba(238, 168, 18, 0.747);
     border: 3px solid rgba(170, 128, 38, 0.747);
+
+    box-shadow: rgba(0, 0, 0, 0.3) 1.2px 1.2px 2.6px;
+    font-family: Bungee;
+    color: rgb(194, 189, 189);
+    font-size: 2.5vh;
+    
+}
+
+.Sun{
+    background-color: rgb(227, 238, 188);
+    /* background-color: hsl(59, 70%, 51%);  /*SUN MODE */
+    width: 70%;
+    height: 70%;
+    border-radius: 100%;
+    justify-self: center;
+}
+.Moon{
+    background-color: #b98823;
+    width: 60%;
+    height: 60%;
+    border-radius: 100%;
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    /* display: none;  */
+
     
 }
