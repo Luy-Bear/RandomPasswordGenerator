@@ -206,7 +206,7 @@ function ToggleDarkMode(){
         sunEl.style.boxShadow = "0 0 2vh 5px rgb(247, 255, 130)"
         sunEl.style.width= "50%"
         sunEl.style.height= "50%"
-        moonEl.style.transform = "translate(10px, -10px)"
+        moonEl.style.transform = "translate(20px, -20px)"
     }
     console.log("Bobs")
     UpdateTheme()
