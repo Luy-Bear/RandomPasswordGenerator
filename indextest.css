@@ -214,4 +214,5 @@ button{
     border-radius: 40%;
     background-color: rgba(44, 58, 97, 0.897);
     border: 3px solid rgba(170, 128, 38, 0.747);
+    justify-content: center;
  }
