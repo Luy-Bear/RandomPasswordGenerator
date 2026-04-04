@@ -34,6 +34,8 @@ const GenPasswordBtn = document.querySelector("#GenPwBtn")
 GenPasswordBtn.addEventListener('click', () => {
     // generatePassword("GenPwOne")
     // generatePassword("GenPwTwo")
+        window.clearInterval(intervalId);
+        window.clearInterval(intervalId2)
         intervalId = window.setInterval(()=>{generatePassword("GenPwOne"), 100})
         intervalId2 = window.setInterval(()=>{generatePassword("GenPwTwo"), 100})
     

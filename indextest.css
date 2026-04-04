@@ -17,7 +17,6 @@
 }
 
 
-
 #WarningPopUp{
     border: .3vh solid red;
     border-radius: 2vh;
@@ -41,14 +40,14 @@
 
 
 body{
-    height: 90vh;
+    min-height: 95vh;
     background-color:  rgba(3, 19, 65, 0.89);
     background-color:  rgb(8, 8, 8);
 
-    display: flex;
+    display: flex   ;
     flex-direction: column;
     align-items: center;
-
+    justify-content: space-evenly;
     /* background-color: red; */
 }
 
@@ -59,9 +58,8 @@ body{
     align-items: center;
 
     border-radius: 40px;
-    background-color:  rgba(44, 58, 97, 0.897);
+    /* background-color:  rgba(44, 58, 97, 0.897); */
     background-color: rgba(54, 54, 54, 0.301);
-
 }
 
 .ArgP{
@@ -210,8 +208,8 @@ button{
     position:absolute;
     top: 2vh;
     right: 2vh;
-    width: 90px;
-    height: 90px;  
+    width: 9vh;
+    height: 9vh;  
     margin: 0; 
     border-radius: 40%;
     background-color: rgba(44, 58, 97, 0.897);
